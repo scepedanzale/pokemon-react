@@ -7,10 +7,13 @@ html, body, #root{
     top: 0;
     background-color: #FECA1B;
 }
+.blu{
+    color: #436eb9;
+}
 
 /* home page */
 .main-container{
-    height: 85%;
+    height: 82%;
     position: sticky;
     top: 0;
     border-radius: 0.5em;
@@ -21,6 +24,9 @@ html, body, #root{
     .main-container{
         height: 97%;
     }
+    .main-row{
+        min-height: 85%;
+    }
     /* navbar */
     nav{
         height: 97%;
@@ -28,7 +34,7 @@ html, body, #root{
     }
 }
 .main-row{
-    height: 90%;
+    height: 82%;
     overflow: auto;
 }
 .main-row::-webkit-scrollbar{
@@ -58,4 +64,96 @@ html, body, #root{
 }
 .bi-heart-fill:hover{
     color: #FECA1B;
+}
+
+/* search */
+.search:hover{
+    background-color: #436eb9;
+    color: #FECA1B;
+}
+
+
+.pokemon-link{
+    text-decoration: none;
+    color: rgb(65, 65, 65);
+}
+.pokemon-link:hover{
+    color: #436eb9;
+}
+
+
+
+/* colori */
+
+.normal{
+    background-color: #A0A29F;
+    color: white;
+}
+.fighting{
+    background-color: #EE7E33;
+}
+.flying{
+    background-color: #81B9EF;
+}
+.poison{
+    background-color: #9144CB;
+    color: white;
+}
+.ground{
+    background-color: #915121;
+    color: white;
+}
+.rock{
+    background-color: #B0AA81;
+}
+.bug{
+    background-color: #91A119;
+}
+.ghost{
+    background-color: #704170;
+    color: white;
+}
+.steel{
+    background-color: #60A1B9;
+    color: white;
+}
+.fire{
+    background-color: #E73E33;
+    
+}
+.water{
+    background-color: #2980F0;
+    color: white;
+}
+.grass{
+    background-color: #52A12B;
+    color: white;
+}
+.electric{
+    background-color: #F7C033;
+}
+.psychic{
+    background-color: #E94579;
+}
+.ice{
+    background-color: #61D9FB;
+}
+.dragon{
+    background-color: #5160E1;
+    color: white;
+}
+.dark{
+    background-color: #615958;
+    color: white;
+}
+.fairy{
+    background-color: #E86FEF;
+}
+.unknown{
+    background-color: #669D8D;
+    color: white;
+}
+.shadow{
+    background-color: #5F4E81;
+    color: white;
 }

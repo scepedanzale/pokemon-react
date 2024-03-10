@@ -5,6 +5,8 @@ import NavbarComponent from './components/NavbarComponent';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Provider } from 'react-redux';
 import { store } from './redux/store/store';
+import SearchPage from './pages/SearchPage';
+import SinglePokemonPage from './pages/SinglePokemonPage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
               <Col md={8} lg={9} className='h-100'>
                 <Routes>
                   <Route path='/' element={<HomePage/>}/>
+                  <Route path='/search' element={<SearchPage/>}/>
+                  <Route path='/pokemon/:id' element={<SinglePokemonPage/>}/>
                 </Routes>
               </Col>
             </Row>

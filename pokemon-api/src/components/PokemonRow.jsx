@@ -3,6 +3,8 @@ import { urlImgs } from '../config/config'
 import { Col, Container, Image, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavourite, removeFavourite } from '../redux/actions/actions';
+import { Link } from 'react-router-dom';
+import { Capitalize, pokemonId } from '../functions/functions';
 
 export default function PokemonRow({pokemon}) {
 
@@ -11,42 +13,21 @@ export default function PokemonRow({pokemon}) {
   const [singlePokemon, setSinglePokemon] = useState([]);
 
   useEffect(()=>{
-    fetch(pokemon.url)
-    .then(response => response.json())
-    .then(json => {
-      console.log(json)
-      setSinglePokemon(json)
-    })
-    .catch(error => {
-      console.error(error)
-    })
+    if(pokemon.url){
+      fetch(pokemon.url)
+      .then(response => response.json())
+      .then(json => {
+        console.log(json)
+        setSinglePokemon(json)
+      })
+      .catch(error => {
+        console.error(error)
+      })
+    }else{
+      setSinglePokemon(pokemon)
+    }
   }, [pokemon])
 
-  const Capitalize = (pokemonName) => {
-    const array = []
-    const splitName = pokemonName.split('-')
-    splitName.map((word)=>{
-      const firstLetter = word.slice(0, 1);
-      const firstLetterCap = firstLetter.toUpperCase();
-      const newPokemonName = firstLetterCap+word.slice(1)
-      array.push(newPokemonName)
-    })
-    const finalName = array.join(' ')
-
-    return finalName
-  }
-
-  const pokemonId = (id) => {
-    if(id < 10){
-      return `000${id}`
-    }else if(id < 100){
-      return `00${id}`
-    }else if(id < 1000){
-      return `0${id}`
-    }else{
-      return id
-    }
-  }
 
   const favourites = useSelector(state => state.pokemon.favourites)
   const favourite = favourites.find((p) => p.id === singlePokemon.id)
@@ -63,7 +44,10 @@ export default function PokemonRow({pokemon}) {
             <Image className='' src={singlePokemon.sprites.front_default}/>
           </Col>
           <Col xs={5} sm={4} className='p-0'>
-            <p className='m-0 ms-3'><b>{Capitalize(singlePokemon.name)}</b></p>
+            <Link to={`/pokemon/${singlePokemon.id}`} className='pokemon-link'>
+              <p className='m-0 ms-3'><b>{Capitalize(singlePokemon.name)}</b></p>
+            </Link>
+            
           </Col>
           <Col xs={3} sm={2} className='p-0 text-center'>
             {!favourite ?

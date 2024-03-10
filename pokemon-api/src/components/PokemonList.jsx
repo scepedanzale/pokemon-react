@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addPokemonList } from '../redux/actions/actions';
 import { urlApi } from '../config/config';
-import { Row } from 'react-bootstrap';
+import { Button, Col, Form, InputGroup, Row } from 'react-bootstrap';
 import PokemonRow from './PokemonRow';
+import { Link } from 'react-router-dom';
 
 export default function PokemonList() {
 
@@ -33,11 +34,16 @@ export default function PokemonList() {
 
   return (
     <>
-        <Row>
-            {pokemon && 
-            <p className='m-0 mt-2'>Numero Pokémon: {pokemon[0].length}</p> }
+        <Row className='align-items-center px-3'>
+            <Col>
+                {pokemon && 
+                <p className='my-2 blu'>Numero Pokémon: {pokemon[0].length}</p> }
+            </Col>
+            <Col className='text-end fs-4'>
+                <Link to='/search'><i class="bi bi-search"></i></Link>
+            </Col>
         </Row>
-        <Row className={`main-row py-3 ps-3 ${currentPage > 1 ? 'scroll-to-top' : ''}`}>
+        <Row className='main-row py-2 ps-3'>
             {currentPokemonList &&
             currentPokemonList.map((p, i)=>(
                 <PokemonRow key={i} pokemon={p}/>
