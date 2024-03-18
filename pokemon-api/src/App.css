@@ -157,3 +157,26 @@ html, body, #root{
     background-color: #5F4E81;
     color: white;
 }
+
+/* evolutions */
+
+.evolution-selected{
+    background-color: #fec91b8a;
+    border-radius: 1em ;
+}
+.evolution:hover{
+    transform: scale(1.2);
+    animation: evolutionHover 0.8s linear infinite;
+}
+
+@keyframes evolutionHover {
+    0%{
+        transform: translateY(0em);
+    }
+    50%{
+        transform: translateY(-1.5em);
+    }
+    100%{
+        transform: translateY(0em);
+    }
+}

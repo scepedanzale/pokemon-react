@@ -27,3 +27,23 @@ export const Capitalize = (pokemonName) => {
     return finalName
   }
 
+
+// evoluzioni specie
+
+export const evolutionController = (evolutionChain) => {
+  const evolutionsArray = []
+
+  const traverse = (evolution) => {
+    evolutionsArray.push({
+      name: evolution.species.name,
+    })
+    evolution.evolves_to.forEach(e => {
+      traverse(e)
+    })
+  }
+
+  evolutionChain.forEach(evolution => {
+    traverse(evolution)
+  });
+  return evolutionsArray
+}

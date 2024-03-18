@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, InputGroup, Row } from 'react-bootstrap'
-import { urlApi, urlSinglePokemon } from '../config/config';
 import { useDispatch, useSelector } from 'react-redux';
 import { search } from '../redux/actions/actions';
-import PokemonRow from './PokemonRow';
+import PokemonRowComponent from './PokemonRowComponent';
 
 export default function SearchComponent() {
 
@@ -45,7 +44,7 @@ export default function SearchComponent() {
             </Col>
             {pokemon &&
             pokemon.map((p, i)=>(
-                <PokemonRow key={i} pokemon={p}/>
+                <PokemonRowComponent key={i} pokemon={p}/>
             ))}
         </Row>
     </>

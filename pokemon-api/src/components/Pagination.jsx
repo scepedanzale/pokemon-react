@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
-import { urlApi } from '../config/config';
-import PokemonList from './PokemonList';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage } from '../redux/actions/actions';
 

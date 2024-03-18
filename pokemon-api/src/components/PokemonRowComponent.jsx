@@ -6,7 +6,7 @@ import { addFavourite, removeFavourite } from '../redux/actions/actions';
 import { Link } from 'react-router-dom';
 import { Capitalize, pokemonId } from '../functions/functions';
 
-export default function PokemonRow({pokemon}) {
+export default function PokemonRowComponent({pokemon}) {
 
   const dispatch = useDispatch()
 
@@ -17,7 +17,6 @@ export default function PokemonRow({pokemon}) {
       fetch(pokemon.url)
       .then(response => response.json())
       .then(json => {
-        console.log(json)
         setSinglePokemon(json)
       })
       .catch(error => {

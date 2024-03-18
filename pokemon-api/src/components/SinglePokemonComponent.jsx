@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { urlImgs, urlSinglePokemon } from '../config/config';
 import { Col, Image, Row } from 'react-bootstrap';
 import { Capitalize, pokemonId } from '../functions/functions';
+import PokemonEvolutionComponent from './PokemonEvolutionComponent';
 
 export default function SinglePokemonComponent() {
 
@@ -32,8 +33,11 @@ export default function SinglePokemonComponent() {
         <Col>
             {pokemon.types &&
             pokemon.types.map((t)=>(
-                <p className={`px-3 py-1 rounded-3 ${t.type.name}`}>{Capitalize(t.type.name)}</p>
+                <p key={t.id} className={`px-3 py-1 rounded-3 ${t.type.name}`}>{Capitalize(t.type.name)}</p>
             ))}
+        </Col>
+        <Col xs={12} className='d-flex'>
+            <PokemonEvolutionComponent pokemon={pokemon.name}/>
         </Col>
     </Row>
   )

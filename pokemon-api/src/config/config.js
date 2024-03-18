@@ -1,7 +1,9 @@
 export const urlApi = "https://pokeapi.co/api/v2/pokemon?limit=1400";
 export const urlSinglePokemon = "https://pokeapi.co/api/v2/pokemon/";
-//export const urlImgs = "https://img.pokemondb.net/artwork/";
-export const urlImgs = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
+export const urlEvolutions = 'https://pokeapi.co/api/v2/evolution-chain/';
+export const urlSpecies = 'https://pokeapi.co/api/v2/pokemon-species/';
+
+
 
 /* 
 
@@ -9,14 +11,16 @@ export const urlImgs = "https://raw.githubusercontent.com/PokeAPI/sprites/master
 https://pokeapi.co/api/v2/pokemon-color/
 // type
 https://pokeapi.co/api/v2/type/
+// spieces
+https://pokeapi.co/api/v2/pokemon-species/
 // moves
 https://pokeapi.co/api/v2/move/
 // move battle styles
 https://pokeapi.co/api/v2/move-battle-style/
 // move categories
-https://pokeapi.co/api/v2/move-category
+https://pokeapi.co/api/v2/move-category/
 // evolutions
-https://pokeapi.co/api/v2/evolution-chain
+https://pokeapi.co/api/v2/evolution-chain/
 // generations
 https://pokeapi.co/api/v2/generation/
 // games
@@ -26,7 +30,7 @@ https://pokeapi.co/api/v2/item/
 // machines
 https://pokeapi.co/api/v2/machine/
 // habitat
-https://pokeapi.co/api/v2/pokemon-habitat
+https://pokeapi.co/api/v2/pokemon-habitat/
 // location
 https://pokeapi.co/api/v2/location/
 // regions
