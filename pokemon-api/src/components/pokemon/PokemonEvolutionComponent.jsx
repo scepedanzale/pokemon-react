@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { urlEvolutions, urlSinglePokemon, urlSpecies } from '../config/config'
+import { urlEvolutions, urlSinglePokemon, urlSpecies } from '../../config/config'
 import { Col, Image } from 'react-bootstrap';
-import { evolutionController } from '../functions/functions';
+import { evolutionController } from '../../functions/functions';
 import { Link } from 'react-router-dom'
 
 export default function PokemonEvolutionComponent({pokemon}) {
@@ -73,7 +73,9 @@ export default function PokemonEvolutionComponent({pokemon}) {
         {evolutions &&
         evolutions.map((e)=>(
             <Col key={e.id} className='d-flex justify-content-center'>
-                <Link to={`/pokemon/${e.id}`} className={`${e.name === pokemon ? 'evolution-selected' : ''}`}><Image src={e.sprites.front_default} className='evolution'/></Link>
+                <Link to={`/pokemon/${e.id}`} className={`${e.name === pokemon ? 'evolution-selected' : ''}`}>
+                    <Image src={e.sprites.front_default} className='evolution'/>
+                </Link>
             </Col>
             
         ))

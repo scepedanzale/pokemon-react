@@ -14,10 +14,16 @@ export default function NavbarComponent() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
         </div>
         <Navbar.Collapse id="basic-navbar-nav" className='py-3'>
-          <Link to="/" className='nav-link'>Home</Link>
-          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <Link to="#" className='dropdown-item'>Categorie</Link>
-          </NavDropdown>
+          <div className='text-start w-100'>
+            <Link to="/favourites" className='nav-link blu fw-bold text-uppercase mt-3'>Preferiti</Link>
+            <hr />
+            <Link to="/" className='nav-link'>Pokémon</Link>
+            <Link to="/" className='nav-link'>Tipi</Link>
+            <Link to="/" className='nav-link'>Mosse</Link>
+            <Link to="/" className='nav-link'>Regioni</Link>
+            <Link to="/" className='nav-link'>Generazioni</Link>
+            <Link to="/" className='nav-link'>Giochi</Link>
+          </div>
         </Navbar.Collapse>
       </div>
         

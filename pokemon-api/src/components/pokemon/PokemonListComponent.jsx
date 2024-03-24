@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { addPokemonList } from '../redux/actions/actions';
-import { urlApi } from '../config/config';
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { addPokemonList } from '../../redux/actions/actions';
+import { urlApi } from '../../config/config';
 import PokemonRowComponent from './PokemonRowComponent';
 
 export default function PokemonList() {

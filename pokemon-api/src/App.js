@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store/store';
 import SearchPage from './pages/SearchPage';
 import SinglePokemonPage from './pages/SinglePokemonPage';
+import FavouritePage from './pages/FavouritePage';
 
 function App() {
   return (
@@ -18,11 +19,14 @@ function App() {
                 <NavbarComponent/>
               </Col>
               <Col md={8} lg={9} className='h-100'>
+              <Container fluid className='main-container my-3 my-md-2'>
                 <Routes>
                   <Route path='/' element={<HomePage/>}/>
                   <Route path='/search' element={<SearchPage/>}/>
                   <Route path='/pokemon/:id' element={<SinglePokemonPage/>}/>
+                  <Route path='/favourites' element={<FavouritePage/>}/>
                 </Routes>
+              </Container>
               </Col>
             </Row>
           </Container>

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { urlImgs } from '../config/config'
 import { Col, Container, Image, Row } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { addFavourite, removeFavourite } from '../redux/actions/actions';
 import { Link } from 'react-router-dom';
-import { Capitalize, pokemonId } from '../functions/functions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavourite, removeFavourite } from '../../redux/actions/actions';
+import { Capitalize, pokemonId } from '../../functions/functions';
 
 export default function PokemonRowComponent({pokemon}) {
 
@@ -26,7 +25,6 @@ export default function PokemonRowComponent({pokemon}) {
       setSinglePokemon(pokemon)
     }
   }, [pokemon])
-
 
   const favourites = useSelector(state => state.pokemon.favourites)
   const favourite = favourites.find((p) => p.id === singlePokemon.id)

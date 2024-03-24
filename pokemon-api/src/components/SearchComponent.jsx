@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, InputGroup, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { search } from '../redux/actions/actions';
-import PokemonRowComponent from './PokemonRowComponent';
+import PokemonRowComponent from './pokemon/PokemonRowComponent';
 
 export default function SearchComponent() {
 
@@ -26,12 +26,13 @@ export default function SearchComponent() {
                 <p className='my-2 blu'>Numero Pokémon: {pokemon[0].length}</p> }
             </Col> */}
             <Col className='my-2'>
-                <Form.Group>
+                <Form.Group onSubmit={handleSubmit}>
                     <InputGroup hasValidation>
                         <Form.Control
                         type="text"
                         placeholder="Cerca Pokémon..."
                         onChange={(e)=>handleChange(e)}
+                        autoFocus
                         />
                         <Button variant='' className='border-0 fs-4 blu' onClick={()=>handleSubmit()}><i class="bi bi-search"></i></Button>
                     </InputGroup>

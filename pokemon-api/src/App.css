@@ -1,5 +1,8 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 
 html, body, #root{
     height: 100%;
@@ -7,11 +10,21 @@ html, body, #root{
     top: 0;
     background-color: #FECA1B;
 }
+body{
+    font-family: "Montserrat", sans-serif;
+}
 .blu{
     color: #436eb9;
 }
+.btn{
+    border: none;
+}
+.cursor{
+    cursor: pointer;
+}
 
 /* home page */
+
 .main-container{
     height: 82%;
     position: sticky;
@@ -36,6 +49,9 @@ html, body, #root{
 .main-row{
     height: 82%;
     overflow: auto;
+    background-color: #fafafa;
+    margin: 0 0.1em;
+    border-radius: 0.5em;
 }
 .main-row::-webkit-scrollbar{
     background-color: rgba(29, 20, 20, 0);
@@ -43,9 +59,47 @@ html, body, #root{
     border-radius: 0.5em;
 }
 
-.bi-arrow-left-circle:hover, .bi-arrow-right-circle:hover{
-    color: #d5a919;
+
+
+/* navbar */
+
+.nav-link{
+    padding: 0.1em 0.5em;
+    margin: 0.2em 0;
+    border-radius: 0.3em;
 }
+.nav-link:hover{
+    background-color: #fec91b5f;
+    
+}
+
+
+
+/* icone */
+
+.bi-arrow-left-circle:hover, 
+.bi-arrow-right-circle:hover,
+.bi-heart:hover,
+.bi-heart-fill:hover, 
+.bi-volume-up:hover{
+    color: #f1be14;
+}
+.bi-heart-fill{
+    color: #436eb9;
+}
+
+
+/* search */
+
+.search:hover{
+    background-color: #436eb9;
+    color: #FECA1B;
+}
+
+
+
+/* rowpokemon */
+
 .pokemon-row{
     background-color: #fec91b5f;
     margin: 0 0 0.5em 0.1em;
@@ -54,25 +108,7 @@ html, body, #root{
 .pokemon-row:hover{
     background-color: #3760a854;
 }
-
-/* preferiti */
-.bi-heart:hover{
-    color: #FECA1B;
-}
-.bi-heart-fill{
-    color: #436eb9;
-}
-.bi-heart-fill:hover{
-    color: #FECA1B;
-}
-
-/* search */
-.search:hover{
-    background-color: #436eb9;
-    color: #FECA1B;
-}
-
-
+/* nome pokemon */
 .pokemon-link{
     text-decoration: none;
     color: rgb(65, 65, 65);
@@ -179,4 +215,10 @@ html, body, #root{
     100%{
         transform: translateY(0em);
     }
+}
+
+
+/* verso */
+#cries:hover{
+    color: #e6b412;
 }

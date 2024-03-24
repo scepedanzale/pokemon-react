@@ -13,22 +13,26 @@ https://pokeapi.co/api/v2/pokemon-color/
 https://pokeapi.co/api/v2/type/
 // spieces
 https://pokeapi.co/api/v2/pokemon-species/
+// evolutions
+https://pokeapi.co/api/v2/evolution-chain/
+
 // moves
 https://pokeapi.co/api/v2/move/
 // move battle styles
 https://pokeapi.co/api/v2/move-battle-style/
 // move categories
 https://pokeapi.co/api/v2/move-category/
-// evolutions
-https://pokeapi.co/api/v2/evolution-chain/
+
 // generations
 https://pokeapi.co/api/v2/generation/
 // games
 https://pokeapi.co/api/v2/version/
+
 // items
 https://pokeapi.co/api/v2/item/
 // machines
 https://pokeapi.co/api/v2/machine/
+
 // habitat
 https://pokeapi.co/api/v2/pokemon-habitat/
 // location
