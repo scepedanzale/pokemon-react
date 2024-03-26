@@ -9,7 +9,9 @@ export default function SearchComponent() {
     const dispatch = useDispatch();
 
     const [input, setInput] = useState('');
-    const pokemon = useSelector(state => state.searchResults)
+    const [results, setResults] = useState([]);
+   // const pokemon = useSelector(state => state.searchResults)
+   const pokemon = useSelector(state => state.pokemon.pokemonList)
 
     const handleChange = (e) => {
         setInput(e.target.value)
@@ -17,15 +19,33 @@ export default function SearchComponent() {
     const handleSubmit = () => {
         dispatch(search(input))
     }
+
+    useEffect(()=>{
+        if(pokemon){
+            const array = []
+            if(input !== ''){
+                pokemon[0].map((p)=>{
+                    if(p.name.includes(input)){
+                        array.push(p)
+                    }
+                })
+                setResults(array)
+            }
+        }
+    }, [input])
+
+    useEffect(()=>{
+        console.log(results)
+    }, [results])
  
   return (
     <>
         <Row className='align-items-center px-2'>
-            {/* <Col>
-                {pokemon && 
-                <p className='my-2 blu'>Numero Pokémon: {pokemon[0].length}</p> }
-            </Col> */}
-            <Col className='my-2'>
+            <Col>
+                {results.length > 0 && 
+                <p className='my-2 blu'>Numero risultati: {results.length}</p> }
+            </Col>
+            <Col xs={12} className='my-2'>
                 <Form.Group onSubmit={handleSubmit}>
                     <InputGroup hasValidation>
                         <Form.Control
@@ -39,14 +59,13 @@ export default function SearchComponent() {
                 </Form.Group>
             </Col>
         </Row>
-        <Row className='main-row p-2 d-flex flex-column justify-content-start align-items-start' >
-            <Col xs={12}>
-                <p className='blu'>Ricerche Recenti:</p>
-            </Col>
-            {pokemon &&
-            pokemon.map((p, i)=>(
-                <PokemonRowComponent key={i} pokemon={p}/>
-            ))}
+        <Row className='main-row p-2' >
+            <div>
+                {results.length > 0  &&
+                results.map((p, i)=>(
+                    <PokemonRowComponent key={i} pokemon={p}/>
+                ))}
+            </div>
         </Row>
     </>
   )
