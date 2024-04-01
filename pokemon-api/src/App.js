@@ -8,6 +8,8 @@ import { store } from './redux/store/store';
 import SearchPage from './pages/SearchPage';
 import SinglePokemonPage from './pages/SinglePokemonPage';
 import FavouritePage from './pages/FavouritePage';
+import SingleTypePage from './pages/SingleTypePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -23,8 +25,10 @@ function App() {
                 <Routes>
                   <Route path='/' element={<HomePage/>}/>
                   <Route path='/search' element={<SearchPage/>}/>
-                  <Route path='/pokemon/:id' element={<SinglePokemonPage/>}/>
                   <Route path='/favourites' element={<FavouritePage/>}/>
+                  <Route path='/pokemon/:id' element={<SinglePokemonPage/>}/>
+                  <Route path='/type/:name' element={<SingleTypePage/>}/>
+                  <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
               </Container>
               </Col>
