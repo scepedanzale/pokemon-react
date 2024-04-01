@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 import { addPokemonList } from '../../redux/actions/actions';
 import { urlApi } from '../../config/config';
 import PokemonRowComponent from './PokemonRowComponent';
+import Pagination from '../Pagination';
 
 export default function PokemonList() {
 
     const dispatch = useDispatch()
 
-    const pokemon = useSelector(state => state.pokemon.pokemonList)
+    const pokemon = useSelector(state => state.pokemon.pokemonList[0])
     const pokemonPerPage = useSelector(state => state.pokemon.pokemonPerPage)
     const currentPage = useSelector(state => state.currentPage)
     
@@ -28,28 +29,22 @@ export default function PokemonList() {
 
     useEffect(()=>{
         if(pokemon){
-            setCurrentPokemonList(pokemon[0].slice((currentPage - 1) * pokemonPerPage, currentPage * pokemonPerPage))
+            console.log(pokemon)
+            setCurrentPokemonList(pokemon.slice((currentPage - 1) * pokemonPerPage, currentPage * pokemonPerPage))
         }
     }, [currentPage, pokemon])
 
   return (
     <>
-        <Row className='align-items-center px-3'>
-            <Col>
-                {pokemon && 
-                <p className='my-2 blu'>Numero Pokémon: {pokemon[0].length}</p> }
-            </Col>
-            <Col className='text-end fs-4'>
-                <Link to='/search'><i class="bi bi-search"></i></Link>
-            </Col>
-        </Row>
         <Row className='main-row py-2 ps-3'>
             {currentPokemonList &&
             currentPokemonList.map((p, i)=>(
                 <PokemonRowComponent key={i} pokemon={p}/>
             ))}
         </Row>
+        {pokemon &&
+            <Pagination pokemon={pokemon}/>
+        }
     </>
-    
   )
 }

@@ -3,10 +3,13 @@ import { Button, Col, Form, InputGroup, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { search } from '../redux/actions/actions';
 import PokemonRowComponent from './pokemon/PokemonRowComponent';
+import { useNavigate } from 'react-router-dom';
+import Pagination from './Pagination';
 
 export default function SearchComponent() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [input, setInput] = useState('');
     const [results, setResults] = useState([]);
@@ -34,18 +37,37 @@ export default function SearchComponent() {
         }
     }, [input])
 
+    
+    /* paginazione */
+    
+    const pokemonPerPage = useSelector(state => state.pokemon.pokemonPerPage)
+    const currentPage = useSelector(state => state.currentPage)
+    
+    const [currentPokemonList, setCurrentPokemonList] = useState([]);
+    
     useEffect(()=>{
-        console.log(results)
-    }, [results])
- 
+        if(results.length>0){
+            setCurrentPokemonList(results.slice((currentPage - 1) * pokemonPerPage, currentPage * pokemonPerPage))
+        }
+    }, [currentPage, results])
+    
+    useEffect(()=>{
+        console.log(currentPokemonList)
+    }, [currentPokemonList])
+
+
   return (
     <>
-        <Row className='align-items-center px-2'>
-            <Col>
-                {results.length > 0 && 
-                <p className='my-2 blu'>Numero risultati: {results.length}</p> }
+        <Row className='align-items-center px-3'>
+            <Col xs={4} lg={3} xl={2}>
+                    <Button variant='' onClick={()=>navigate(-1)}>
+                        <i className="bi bi-arrow-left-circle fs-3"></i>
+                    </Button>
+                    <Button variant='' onClick={()=>navigate(1)}>
+                        <i className="bi bi-arrow-right-circle fs-3"></i>
+                    </Button>
             </Col>
-            <Col xs={12} className='my-2'>
+            <Col className='my-2'>
                 <Form.Group onSubmit={handleSubmit}>
                     <InputGroup hasValidation>
                         <Form.Control
@@ -61,12 +83,19 @@ export default function SearchComponent() {
         </Row>
         <Row className='main-row p-2' >
             <div>
-                {results.length > 0  &&
-                results.map((p, i)=>(
+                <Col>
+                    {currentPokemonList.length > 0 && 
+                    <p className='my-2 blu'>Numero risultati: {results.length}</p> }
+                </Col>
+                {currentPokemonList.length > 0  &&
+                currentPokemonList.map((p, i)=>(
                     <PokemonRowComponent key={i} pokemon={p}/>
                 ))}
             </div>
         </Row>
+        {results.length > 0 &&
+            <Pagination pokemon={results}/>
+        }
     </>
   )
 }

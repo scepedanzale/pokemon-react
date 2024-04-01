@@ -3,12 +3,12 @@ import { Button, Container, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage } from '../redux/actions/actions';
 
-export default function Pagination() {
+export default function Pagination({pokemon}) {
 
     const dispatch = useDispatch()
 
     const pokemonPerPage = useSelector(state => state.pokemon.pokemonPerPage)
-    const pokemon = useSelector(state => state.pokemon.pokemonList)
+    //const pokemon = useSelector(state => state.pokemon.pokemonList)
 
     const currentPage = useSelector(state => state.currentPage)
     const [totalPages, setTotalPages] = useState(0);
@@ -17,8 +17,8 @@ export default function Pagination() {
     // const [currentPage, setCurrentPage] = useState(1);
     // numero pagine totali
     useEffect(()=>{
-        if(pokemon && pokemonPerPage){
-            setTotalPages(Math.ceil(pokemon[0].length / pokemonPerPage));
+        if(pokemon.length>0 && pokemonPerPage){
+            setTotalPages(Math.ceil(pokemon.length / pokemonPerPage));
 
         }
 

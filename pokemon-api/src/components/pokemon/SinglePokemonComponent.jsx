@@ -36,21 +36,7 @@ export default function SinglePokemonComponent() {
     const favourite = favourites.find((p) => p.id === pokemon.id)
 
   return (
-    <>
-        <Row className='align-items-center px-3 py-1'>
-            <Col>
-                <Button variant='' onClick={()=>navigate(-1)}>
-                    <i className="bi bi-arrow-left-circle fs-3"></i>
-                </Button>
-                <Button variant='' onClick={()=>navigate(1)}>
-                    <i className="bi bi-arrow-right-circle fs-3"></i>
-                </Button>
-            </Col>
-            <Col className='text-end fs-4'>
-                <Link to='/search'><i className="bi bi-search"></i></Link>
-            </Col>
-        </Row>
-        
+    <>  
         {pokemon && pokemon.sprites &&
         <Row className='main-row d-flex align-items-center pb-3'>
             <Col xs={12} className='position-relative'>
@@ -84,7 +70,7 @@ export default function SinglePokemonComponent() {
             <Col>
                 {pokemon.types &&
                 pokemon.types.map((t)=>(
-                    <p key={t.id} className={`px-3 py-1 rounded-3 ${t.type.name}`}>{Capitalize(t.type.name)}</p>
+                    <p key={t.id} className={`px-3 py-1 rounded-3 type ${t.type.name} cursor`} onClick={()=>navigate(`/type/${t.type.name}`)}>{Capitalize(t.type.name)}</p>
                 ))}
             </Col>
 
