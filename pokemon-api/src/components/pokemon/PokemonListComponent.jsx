@@ -11,7 +11,7 @@ export default function PokemonList() {
 
     const dispatch = useDispatch()
 
-    const pokemon = useSelector(state => state.pokemon.pokemonList[0])
+    const pokemon = useSelector(state => state.pokemon.pokemonList)
     const pokemonPerPage = useSelector(state => state.pokemon.pokemonPerPage)
     const currentPage = useSelector(state => state.currentPage)
     
@@ -30,7 +30,7 @@ export default function PokemonList() {
     useEffect(()=>{
         if(pokemon){
             console.log(pokemon)
-            setCurrentPokemonList(pokemon.slice((currentPage - 1) * pokemonPerPage, currentPage * pokemonPerPage))
+            setCurrentPokemonList(pokemon[0].slice((currentPage - 1) * pokemonPerPage, currentPage * pokemonPerPage))
         }
     }, [currentPage, pokemon])
 
@@ -43,7 +43,7 @@ export default function PokemonList() {
             ))}
         </Row>
         {pokemon &&
-            <Pagination pokemon={pokemon}/>
+            <Pagination pokemon={pokemon[0]}/>
         }
     </>
   )

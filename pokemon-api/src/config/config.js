@@ -3,6 +3,7 @@ export const urlSinglePokemon = "https://pokeapi.co/api/v2/pokemon/";
 export const urlEvolutions = 'https://pokeapi.co/api/v2/evolution-chain/';
 export const urlSpecies = 'https://pokeapi.co/api/v2/pokemon-species/';
 
+export const urlType = 'https://pokeapi.co/api/v2/type/';
 
 
 /* 
