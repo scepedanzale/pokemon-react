@@ -90,7 +90,7 @@ export default function SearchComponent() {
                         onInput={(e)=>handleChange(e)}
                         autoFocus
                         />
-                        <Button type='button' variant='' className='border-0 fs-4 blu z-30' onClick={handleSubmit}><i class="bi bi-search"></i></Button>
+                        <Button type='button' variant='' className='border-0 fs-4 blu z-30 cursor' onClick={handleSubmit}><i class="bi bi-search"></i></Button>
                     </InputGroup>
                 </Form>
             </Col>
