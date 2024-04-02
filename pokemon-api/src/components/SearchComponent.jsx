@@ -87,6 +87,7 @@ export default function SearchComponent() {
                         type="text"
                         placeholder="Cerca Pokémon..."
                         onChange={(e)=>handleChange(e)}
+                        onInput={(e)=>handleChange(e)}
                         autoFocus
                         />
                         <Button type='button' variant='' className='border-0 fs-4 blu' onClick={handleSubmit}><i class="bi bi-search"></i></Button>
