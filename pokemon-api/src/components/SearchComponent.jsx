@@ -20,7 +20,19 @@ export default function SearchComponent() {
         setInput(e.target.value)
     }
     const handleSubmit = () => {
-        dispatch(search(input))
+        if(pokemon && pokemon[0] && pokemon[0].length>0){
+            console.log(input)
+            const array = []
+            if(input !== ''){
+                pokemon[0].map((p)=>{
+                    if(p.name.includes(input)){
+                        array.push(p)
+                    }
+                    return null;
+                })
+                setResults(array)
+            }
+        }
     }
 
     useEffect(()=>{
@@ -69,17 +81,17 @@ export default function SearchComponent() {
                     </Button>
             </Col>
             <Col className='my-2 p-0'>
-                <Form.Group onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-                    <InputGroup hasValidation>
+                <Form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+                    <InputGroup hasValidation >
                         <Form.Control
                         type="text"
                         placeholder="Cerca Pokémon..."
                         onChange={(e)=>handleChange(e)}
                         autoFocus
                         />
-                        <Button type='submit' variant='' className='border-0 fs-4 blu' onClick={()=>handleSubmit()}><i class="bi bi-search"></i></Button>
+                        <Button type='button' variant='' className='border-0 fs-4 blu' onClick={handleSubmit}><i class="bi bi-search"></i></Button>
                     </InputGroup>
-                </Form.Group>
+                </Form>
             </Col>
         </Row>
         <Row className='main-row p-2' >
