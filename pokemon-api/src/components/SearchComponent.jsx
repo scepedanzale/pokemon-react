@@ -31,11 +31,12 @@ export default function SearchComponent() {
                     if(p.name.includes(input)){
                         array.push(p)
                     }
+                    return null;
                 })
                 setResults(array)
             }
         }
-    }, [input])
+    }, [input, pokemon])
 
     
     /* paginazione */
@@ -49,7 +50,7 @@ export default function SearchComponent() {
         if(results.length>0){
             setCurrentPokemonList(results.slice((currentPage - 1) * pokemonPerPage, currentPage * pokemonPerPage))
         }
-    }, [currentPage, results])
+    }, [currentPage, results, pokemonPerPage])
     
     useEffect(()=>{
         console.log(currentPokemonList)
@@ -59,7 +60,7 @@ export default function SearchComponent() {
   return (
     <>
         <Row className='align-items-center px-3'>
-            <Col xs={4} lg={3} xl={2}>
+            <Col xs={5} lg={3} xl={2} className='p-0'>
                     <Button variant='' onClick={()=>navigate(-1)}>
                         <i className="bi bi-arrow-left-circle fs-3"></i>
                     </Button>
@@ -67,8 +68,8 @@ export default function SearchComponent() {
                         <i className="bi bi-arrow-right-circle fs-3"></i>
                     </Button>
             </Col>
-            <Col className='my-2'>
-                <Form.Group onSubmit={handleSubmit}>
+            <Col className='my-2 p-0'>
+                <Form.Group onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
                     <InputGroup hasValidation>
                         <Form.Control
                         type="text"
@@ -76,7 +77,7 @@ export default function SearchComponent() {
                         onChange={(e)=>handleChange(e)}
                         autoFocus
                         />
-                        <Button variant='' className='border-0 fs-4 blu' onClick={()=>handleSubmit()}><i class="bi bi-search"></i></Button>
+                        <Button type='submit' variant='' className='border-0 fs-4 blu' onClick={()=>handleSubmit()}><i class="bi bi-search"></i></Button>
                     </InputGroup>
                 </Form.Group>
             </Col>
