@@ -19,7 +19,8 @@ export default function SearchComponent() {
     const handleChange = (e) => {
         setInput(e.target.value)
     }
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         if(pokemon && pokemon[0] && pokemon[0].length>0){
             console.log(input)
             const array = []
@@ -81,17 +82,23 @@ export default function SearchComponent() {
                     </Button>
             </Col>
             <Col className='my-2 p-0'>
-                <Form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-                    <InputGroup hasValidation >
+                <Form onSubmit={(e) => handleSubmit(e)}>
+                    <Form.Group >
                         <Form.Control
-                        type="text"
-                        placeholder="Cerca Pokémon..."
-                        onChange={(e)=>handleChange(e)}
-                        onInput={(e)=>handleChange(e)}
-                        autoFocus
+                            type="text"
+                            placeholder="Cerca Pokémon..."
+                            onChange={(e)=>handleChange(e)}
+                            autoFocus
                         />
-                        <Button type='button' variant='' className='border-0 fs-4 blu z-30 cursor' onClick={handleSubmit} onPointerEnter={handleSubmit}><i class="bi bi-search"></i></Button>
-                    </InputGroup>
+                        <Button 
+                            type='button' 
+                            variant='' 
+                            className='border-0 fs-4 blu z-30 cursor' 
+                            onClick={(e) => handleSubmit(e)} 
+                        >
+                            <i class="bi bi-search"></i>
+                        </Button>
+                    </Form.Group>
                 </Form>
             </Col>
         </Row>
